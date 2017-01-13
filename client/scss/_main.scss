@@ -1,0 +1,78 @@
+.main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  flex-direction: column;
+
+  &-card-container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &-card {
+    background-size:  cover;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    transition: all .2s ease-out;
+    filter: grayscale(100%);
+    filter: gray;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(256, 256, 256, 0.5);
+      transition: all .1s ease-out;
+    }
+
+    &:hover:before{
+      background-color: rgba(256, 256, 256, 0.2);
+    }
+
+    &:hover {
+      filter: grayscale(0);
+      filter: none;
+    }
+
+    &.inactive {
+      
+      flex: 0.000001 !important;
+    }
+
+    &.about-us {
+      background-image: url("../img/about.JPG"); 
+      margin: 0 0 2.5px 0;
+      flex: 1 1 100%;
+    }
+    &.venue {
+      background-image: url("../img/venue.JPG");
+      margin: 2.5px 2.5px 2.5px 0; 
+      flex: 1 1 40%;
+    }
+    &.registry {
+      background-image: url("../img/registry.JPG"); 
+      margin: 2.5px 0 2.5px 2.5px;
+      flex: 1 1 40%;    
+    }
+    &.rsvp {
+      background-image: url("../img/rsvp.JPG"); 
+      margin: 2.5px 0 0 0; 
+      flex: 1 1 100%;
+    }
+
+    &__text {
+      position: absolute;
+      top: 10%;
+      right: 10%;
+
+      h1 {
+        font-size: 4rem;
+      }
+    }
+  }
+}

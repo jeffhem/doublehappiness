@@ -9,7 +9,6 @@ var nodemon = require('gulp-nodemon');
 var exec = require('child_process').exec;
 
 // babel
-var babel = require('gulp-babel');
 var webpack = require("webpack");
 var gutil = require("gulp-util");
 var path = require('path');
@@ -84,7 +83,7 @@ gulp.task('serve-tasks', function (cb) {
 });
 
 gulp.task('build', function (cb) {
-  runSequence('clean', ['styles', 'scripts', 'polymer', 'images', 'copy'], cb);
+  runSequence('clean', ['styles', 'scripts', 'images'], cb);
 });
 
 gulp.task('deploy', function () {
@@ -126,10 +125,10 @@ gulp.task('default', function () {
 gulp.task('clean', function (cb) {
   return del([
     'public/**/*',
-    '!public/imgs',
-    'public/imgs/**/*',
-    '!public/imgs/logos',
-    '!public/imgs/logos/**/*'
+    '!public/img',
+    'public/img/**/*',
+    '!public/img/logos',
+    '!public/img/logos/**/*'
   ], cb);
 });
 
@@ -159,9 +158,9 @@ gulp.task('images', function () {
   ];
 
   return gulp.src(files)
-    .pipe(newer(destDir + '/imgs'))
+    .pipe(newer(destDir + '/img'))
     .pipe(imagemin())
-    .pipe(gulp.dest(destDir + '/imgs'));
+    .pipe(gulp.dest(destDir + '/img'));
 });
 
 gulp.task('lint', function() {
@@ -189,8 +188,7 @@ gulp.task('scripts:webpack', function(callback) {
     // run webpack
     webpack({
       entry: [
-        'babel-polyfill',
-        './client-src/js/app.js'
+        './client/js/app.js'
         ],
       output: {
         path: path.join(__dirname, 'public/js'),
