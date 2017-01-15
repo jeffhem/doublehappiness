@@ -1,0 +1,31 @@
+.logo {
+  width: 26rem;
+  height: 26rem;
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  cursor: pointer;
+
+  &.hidden {
+    display: none;
+  }
+
+  &:hover h1 {
+    color: #ae1f24;
+  }
+
+  h1 {
+    margin: 1rem auto;
+    font-size: 2.5rem;
+    font-family: 'Poiret One', cursive;
+
+  }
+
+  img {
+    max-width: 15rem;
+    max-height: 15rem;
+  }
+
+}
+
