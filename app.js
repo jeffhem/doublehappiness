@@ -142,6 +142,54 @@ app.get('/api/favorites/attach', function(request, response) {
     });
 });
 
+app.post('/api/rsvp', (req, res) => {
+  if (req.body && req.body !== '') {
+    const guestData = req.body;
+    const extraGuest = [];
+    var dbEntry = {};
+    var returnData = {};
+
+    console.log(guestData);
+    guestData.forEach((entry) => {
+      if (entry.type === 'primary-guest') {
+        const id = `${entry.guest_first_name}_${entry.guest_last_name}`.replace(/ /g, '_');
+        dbEntry = {
+          _id: id,
+          attending: entry.attend,
+          firstName: entry.guest_first_name,
+          lastName: entry.guest_last_name,
+          starter: entry.starter,
+          entree: entry.entree,
+        };
+        returnData = {
+          attendanding: entry.attend,
+          firstName: entry.guest_first_name,
+        }
+      } else {
+        delete entry.type;
+        extraGuest.push(entry);
+      }
+    });
+
+    dbEntry.extraGuest = extraGuest;
+
+    // save doc
+    db.insert(dbEntry, function(err, doc) {
+      if (err) {
+        console.log(err);
+        res.status(err.statusCode);
+        res.send(req.body);
+      } else {
+        console.log('New doc created ..');
+        res.status(200);
+        res.type('application/json');
+        res.send(returnData);
+      }
+      res.end();
+    });
+  }
+});
+
 app.post('/api/favorites/attach', multipartMiddleware, function(request, response) {
 
     console.log("Upload File Invoked..");

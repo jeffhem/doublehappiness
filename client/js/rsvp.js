@@ -80,9 +80,9 @@ class RSVP {
       
       groupData.type = group.dataset.groupName;
 
-      const attend = group.querySelector('toggle-switch');
+      const attend = group.querySelector('.toggle-switch');
       if (attend) {
-        groupData.attend = attend.check ? 'yes' : 'no';
+        groupData.attend = attend.checked ? 'yes' : 'no';
       }
 
       const inputs = group.querySelectorAll('input[type="text"]');
@@ -108,12 +108,29 @@ class RSVP {
 
   submitForm() {
     const submitBtn = document.querySelector('.func-btn__submit');
+    const submitMsg = document.querySelector('.submit-msg');
+    const formContent = document.querySelector('.rsvp-form-container');
     submitBtn.addEventListener('click', (e) => {
       // check if primary name filled out
       if (!this.hasEmptyfield()) {
-        console.log('error free');
-        console.log(this.getFormData())
-        this.getFormData();
+        // console.log('error free');
+        // console.log(this.getFormData())
+        formContent.style.display = 'none';
+        const formData = this.getFormData();
+        util.xhrPost('api/rsvp', formData, (data) => {
+          // console.log(data);
+          if (data.attendanding == 'yes') {
+            submitMsg.innerHTML = `Thank you for joining us, ${data.firstName}! Looking forward to seeing you in the wedding!`;
+          } else {
+            submitMsg.innerHTML = `Thank you for the rsvp! Let us know anytime if your plan changed!`;
+          }
+        }, (error) => {
+          // console.log(error);
+          // console.warn(`error: ${error}`);
+          if (error.status === '409') {
+            submitMsg.innerHTML = `${error.body.guest_first_name}, Looks like you already register before, please let Tianyu or Jeff know if your plan has changed.`
+          }
+        })
       }
     })
   }

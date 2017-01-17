@@ -8,6 +8,8 @@
     "document": true,
     "Element": true,
     "NodeList": true,
-    "HTMLCollection": true
+    "HTMLCollection": true,
+    "XMLHttpRequest": true,
+    "ActiveXObject": true
   }
 }
