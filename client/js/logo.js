@@ -1,15 +1,21 @@
 import {cards} from './cards';
+import {nav} from './nav';
 
 class Logo {
   constructor() {
     this.logo = document.querySelector('.logo');
-    this.rsvpCard = document.getElementsByClassName('main-card rsvp')[0];
     this.init();
   }
 
   init() {
-    this.logo.addEventListener('click', () => {
-      cards.expandCard(this.rsvpCard);
+    this.logo.addEventListener('click', (e) => {
+      if (this.logo.classList.contains('shrink')){
+        cards.collapseCards();
+        nav.resetCurrent();
+      } else {
+        const rsvp = document.querySelector('.rsvp');
+        cards.expandCard(rsvp);
+      }
     });
   }
 }

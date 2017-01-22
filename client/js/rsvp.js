@@ -119,16 +119,17 @@ class RSVP {
         const formData = this.getFormData();
         util.xhrPost('api/rsvp', formData, (data) => {
           // console.log(data);
+          submitMsg.innerHTML = `<h2>Thank you for your RSVP, ${data.firstName}!!</h2>`;
           if (data.attendanding == 'yes') {
-            submitMsg.innerHTML = `Thank you for joining us, ${data.firstName}! Looking forward to seeing you in the wedding!`;
+            submitMsg.innerHTML =  '<p>Looking forward to seeing you on May 13!</p>';
           } else {
-            submitMsg.innerHTML = `Thank you for the rsvp! Let us know anytime if your plan changed!`;
+            submitMsg.innerHTML = '<p>We\'re sorry you can\'t make it, feel free to let us know anytime if your plan changed!</p>';
           }
         }, (error) => {
           // console.log(error);
           // console.warn(`error: ${error}`);
           if (error.status === '409') {
-            submitMsg.innerHTML = `${error.body.guest_first_name}, Looks like you already register before, please let Tianyu or Jeff know if your plan has changed.`
+            submitMsg.innerHTML = `${error.body.guest_first_name}, Looks like you already registered before, please let Tianyu or Jeff know if your plan has changed.`
           }
         })
       }

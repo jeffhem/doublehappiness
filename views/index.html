@@ -7,26 +7,28 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
 	<link rel="stylesheet" href="/css/doublehappiness.css" />
+	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/img/favicon.ico" type="image/x-icon">	
 </head>
 <body>
   <main class="main">
 		<section class="main-card-container">
-			<section class="main-card couple">
+			<section class="main-card couple" data-current="couple">
 				<article class="main-card-title">
-					<h1>The Couple</h1>
+					<h1>TIANYU & JEFF</h1>
 				</article>
 			</section>
-			<section class="main-card wedding">
+			<section class="main-card wedding" data-current="wedding">
 				<article class="main-card-title">
-					<h1>The Wedding</h1>
+					<h1>WEDDING</h1>
 				</article>
 			</section>
-			<section class="main-card registry">
+			<section class="main-card registry" data-current="registry">
 				<article class="main-card-title">
-					<h1>Registry</h1>
+					<h1>REGISTRY</h1>
 				</article>
 			</section>
-			<section class="main-card rsvp">
+			<section class="main-card rsvp" data-current="rsvp">
 				<article class="main-card-title">
 					<h1>RSVP</h1>
 				</article>
@@ -81,19 +83,21 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="submit-msg"></div>
 				</div>
 			</section>
 		</section>
   </main>  
 	<div class="logo">
-		<!--<h1>Join Our Wedding Celebration!</h1>-->
 		<img src="img/logo.svg">
-		<!--<h1 class="rsvp-box">
-			RSVP NOW
-		</h1>-->
+		<h1>05.13.2017</h1>
 	</div>
+	<nav class="global-nav">
+		<li><a href="couple" data-nav="couple">TIANYU & JEFF</a></li>
+		<li><a href="wedding" data-nav="wedding">WEDDING</a></li>
+		<li><a href="registry" data-nav="registry">REGISTRY</a></li>
+		<li><a href="rsvp" data-nav="rsvp">RSVP</a></li>
+	</nav>
 	<script type="text/javascript" src="/js/doublehappiness.js"></script>
 </body>
 </html>

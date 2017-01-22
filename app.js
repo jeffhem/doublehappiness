@@ -27,6 +27,7 @@ var logger = require('morgan');
 var errorHandler = require('errorhandler');
 var multipart = require('connect-multiparty')
 var multipartMiddleware = multipart();
+var favicon = require('serve-favicon');
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -40,6 +41,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname,'public','img','favicon.ico')));
 app.use('/style', express.static(path.join(__dirname, '/views/style')));
 
 // development only

@@ -17,34 +17,46 @@
     box-shadow: 0 0 0 #000;
     transform: translate3d(0,0,0);
     background-size:  cover;
-    background-position: center center;
+    background-position: center top;
     background-repeat:  no-repeat;
     background-attachment: fixed;
-    transition: all .2s ease-out;
+    transition: flex 0.2s ease-out, filter .2s ease-out;
     filter: grayscale(100%);
     position: relative;
+    cursor: pointer;
+    // border-style: solid;
+    // border-color: #fff;
 
     &-title {
       text-align: right;
+      position: absolute;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       h1 {
-        font-family: 'Poiret One', cursive;
+        font-family: 'Abel', sans-serif;
         font-size: 5rem;
         color: #fff;
         font-weight: 200;
         display: inline-block;
+        margin: 1rem;
         &:after {
           //fixed jumpy transition
           box-shadow: 0 0 0 #000;
           transform: translate3d(0,0,0);
-          content: "";
+          content: '...';
+          text-align: center;
+          font-size: 3rem;
+          line-height: 1.5;
           width: 100%;
-          height: 2px;
+          height: 1px;
           display: block;
           margin-top: 5px;
           background-color: #fff;
           visibility: hidden;
           transform: scaleX(0);
-          transition: transform .2s ease-in-out;
+          transition: transform .15s ease-in-out;
           
         }
       }
@@ -60,8 +72,8 @@
       width: 100%;
       height: 100%;
       position: absolute;
-      background-color: rgba(256, 256, 256, 0.7);
-      transition: all .1s ease-out;
+      background-color: rgba(256, 256, 256, 0.6);
+      
     }
 
     &:hover:before{
@@ -71,7 +83,8 @@
     &:hover {
       filter: grayscale(0);
       &:before {
-        background-color: rgba(256, 256, 256, 0.4);
+        transition: background-color .1s ease-out;
+        background-color: rgba(113, 113, 113, 0.4);
       }
       & > .main-card-title h1:after {
         transform: scaleX(1);
@@ -84,17 +97,12 @@
       filter: grayscale(0);
       filter: none;
 
-      & > .main-card-title h1:after {
-        transform: scaleX(1);
-        visibility: visible;
+      & > .main-card-title h1 {
+        display: none;
       } 
 
       & > .main-card-content {
         display: block;
-      }
-      
-      &:before {
-        background-color: rgba(256, 256, 256, 0.2);
       }
     }
 
@@ -104,33 +112,51 @@
 
       & > .main-card-title h1 {
         display: none;
-      } 
+      }
+      
     }
 
     &.active, &.inactive {
       filter: grayscale(0);
       filter: none;
+      &:before {
+        background-color: rgba(256, 256, 256, 0.2);
+      }
+      background-image: none !important;
+      border-width: 0 !important;
     }
 
     &.couple {
       background-image: url("../img/about.JPG"); 
-      margin: 0 0 2.5px 0;
+      border-width: 0 0 2.5px 0;
       flex: 1 1 100%;
+      &:hover > .main-card-title h1:after {
+        content: 'our story';
+      }
     }
     &.wedding {
-      background-image: url("../img/venue.JPG");
-      margin: 2.5px 2.5px 2.5px 0; 
+      background-image: url("../img/about.JPG");
+      border-width: 2.5px 2.5px 2.5px 0; 
       flex: 1 1 40%;
+      &:hover > .main-card-title h1:after {
+        content: 'our BIG day';
+      }
     }
     &.registry {
-      background-image: url("../img/registry.JPG"); 
-      margin: 2.5px 0 2.5px 2.5px;
-      flex: 1 1 40%;    
+      background-image: url("../img/about.JPG"); 
+      border-width: 2.5px 0 2.5px 2.5px;
+      flex: 1 1 40%;
+      &:hover > .main-card-title h1:after {
+        content: '!!!';
+      }
     }
     &.rsvp {
-      background-image: url("../img/rsvp.JPG"); 
-      margin: 2.5px 0 0 0; 
+      background-image: url("../img/about.JPG"); 
+      border-width: 2.5px 0 0 0; 
       flex: 1 1 100%;
+      &:hover > .main-card-title h1:after {
+        content: 'now';
+      }
     }
   }
 }
