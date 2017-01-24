@@ -1,162 +1,108 @@
 .main {
-  display: flex;
+  display: block;
   width: 100%;
-  height: 100%;
   padding: 0;
-  flex-direction: column;
+  height: calc(100% - 16.6rem);
+  position: relative;
+  top: 16.6rem;
+
 
   &-card-container {
-    flex: 1;
+    // flex: 1;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: no-wrap;
+    width: 100%;
+    height: 100%;
+    // background-size: 60% 60%;
+    // background-position: 160% bottom;
+    // background-repeat:  no-repeat;
+    // background-attachment: fixed;
+    // background-image: url("../img/nav.svg"); 
   }
 
   &-card {
     //fixed jumpy transition
     box-shadow: 0 0 0 #000;
     transform: translate3d(0,0,0);
-    background-size:  cover;
-    background-position: center top;
-    background-repeat:  no-repeat;
-    background-attachment: fixed;
-    transition: flex 0.2s ease-out, filter .2s ease-out;
-    filter: grayscale(100%);
+    transition: flex .2s ease-in-out;
     position: relative;
     cursor: pointer;
-    // border-style: solid;
-    // border-color: #fff;
-
-    &-title {
-      text-align: right;
-      position: absolute;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      h1 {
-        font-family: 'Abel', sans-serif;
-        font-size: 5rem;
-        color: #fff;
-        font-weight: 200;
-        display: inline-block;
-        margin: 1rem;
-        &:after {
-          //fixed jumpy transition
-          box-shadow: 0 0 0 #000;
-          transform: translate3d(0,0,0);
-          content: '...';
-          text-align: center;
-          font-size: 3rem;
-          line-height: 1.5;
-          width: 100%;
-          height: 1px;
-          display: block;
-          margin-top: 5px;
-          background-color: #fff;
-          visibility: hidden;
-          transform: scaleX(0);
-          transition: transform .15s ease-in-out;
-          
-        }
-      }
-    }
-
-    &-content {
-      display: none;
-    }
-
-    &::before {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background-color: rgba(256, 256, 256, 0.6);
-      
-    }
-
-    &:hover:before{
-      
-    }
-
-    &:hover {
-      filter: grayscale(0);
-      &:before {
-        transition: background-color .1s ease-out;
-        background-color: rgba(113, 113, 113, 0.4);
-      }
-      & > .main-card-title h1:after {
-        transform: scaleX(1);
-        visibility: visible;
-      } 
-    }
+    width: 0%;
+    flex: 1 1 40%;
+    background-color: rgba(256, 256, 256, 0.8);
 
     &.active {
       flex-basis: auto !important;
       filter: grayscale(0);
       filter: none;
-
-      & > .main-card-title h1 {
-        display: none;
-      } 
-
       & > .main-card-content {
         display: block;
       }
     }
-
     &.inactive {
-      flex: 0.000001 !important;
-      flex-basis: auto !important;
-
-      & > .main-card-title h1 {
-        display: none;
-      }
-      
+      flex: 0.00001 !important;
     }
 
     &.active, &.inactive {
-      filter: grayscale(0);
-      filter: none;
-      &:before {
-        background-color: rgba(256, 256, 256, 0.2);
-      }
       background-image: none !important;
       border-width: 0 !important;
     }
 
     &.couple {
-      background-image: url("../img/about.JPG"); 
       border-width: 0 0 2.5px 0;
-      flex: 1 1 100%;
-      &:hover > .main-card-title h1:after {
-        content: 'our story';
-      }
     }
     &.wedding {
-      background-image: url("../img/about.JPG");
-      border-width: 2.5px 2.5px 2.5px 0; 
-      flex: 1 1 40%;
-      &:hover > .main-card-title h1:after {
-        content: 'our BIG day';
-      }
+      border-width: 2.5px 2.5px 2.5px 0;
     }
     &.registry {
-      background-image: url("../img/about.JPG"); 
       border-width: 2.5px 0 2.5px 2.5px;
-      flex: 1 1 40%;
-      &:hover > .main-card-title h1:after {
-        content: '!!!';
-      }
     }
     &.rsvp {
-      background-image: url("../img/about.JPG"); 
-      border-width: 2.5px 0 0 0; 
-      flex: 1 1 100%;
-      &:hover > .main-card-title h1:after {
-        content: 'now';
-      }
+      border-width: 2.5px 0 0 0;
     }
+
+    &-content {
+      display: none;
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      margin:0 auto;
+      padding: 2%;
+      font-family: 'Abel', sans-serif;
+      font-size: 1.7rem;
+      position: relative;
+      top: 0;
+      h2 {
+        margin: 1rem 0;
+        font-size: 2.5rem;
+        font-weight: 800;
+      }
+      h3 {
+        margin: 5px;
+      }
+      p {
+        line-height: 1.7;
+        font-size: 1.6rem;
+        font-family: 'Raleway', sans-serif;
+        padding: 1rem 2rem;
+      }
+      .super {
+        text-align: left;
+        margin: 0;
+        font-size: 7vw;
+        color: rgba(100, 100, 100, .3);
+         font-family: 'Abel', sans-serif;
+      }
+
+      &-half {
+        display: inline-block;
+        vertical-align:top;
+        width: 49.7%;
+        
+      }
+
+    }
+
   }
 }

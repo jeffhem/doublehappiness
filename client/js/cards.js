@@ -3,6 +3,7 @@ import {nav} from './nav';
 
 class Cards {
   constructor() {
+    this.main = document.querySelector('.main');
     this.cards = [...document.querySelectorAll('.main-card')];
     this.logo = document.querySelector('.logo');
     this.fistCard = 'main-card about-us';
@@ -22,14 +23,14 @@ class Cards {
   }
 
   expandCard(item, clickFromNav = false) {
-    
+    this.main.classList.remove('hidden');
     if (clickFromNav) {
       if (!item.classList.contains('active')) {
         this.cards.forEach((card) => {
           card.classList.remove('active');
         });
-        item.classList.toggle('inactive');
-        item.style.display = 'block';
+        item.classList.remove('inactive');
+        // item.style.display = 'block';
       } else {
         // do nothing when click on the active menu item
         return;
@@ -45,7 +46,7 @@ class Cards {
       } else {
         nextElement.classList.toggle('active');
         nextElement.classList.toggle('inactive');
-        nextElement.style.display = 'block';
+        // nextElement.style.display = 'block';
       }
     }
     // hide the rest of the cards
@@ -54,7 +55,7 @@ class Cards {
         card.classList.add('inactive');
         card.addEventListener('transitionend', (e) => {
           if (this.logo.classList.contains('shrink') && e.target.classList.contains('inactive')){
-            e.target.style.display = 'none';
+            // e.target.style.display = 'none';
           }
         });
       } else {
@@ -68,10 +69,11 @@ class Cards {
   }
 
   collapseCards() {
+    this.main.classList.add('hidden');
     this.cards.forEach((card) => {
       card.classList.remove('active');
       card.classList.remove('inactive');
-      card.style.display = 'block';
+      // card.style.display = 'block';
     });
     nav.showNav(false);
     this.logo.classList.remove('shrink');

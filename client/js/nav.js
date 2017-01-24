@@ -3,7 +3,7 @@ import {cards} from './cards';
 class Nav {
   constructor() {
     this.navContainer = document.querySelector('.global-nav');
-    this.navItems = [...this.navContainer.querySelectorAll('li a')];
+    this.navItems = [...this.navContainer.querySelectorAll('li')];
     this.navAction();
   }
 
@@ -20,9 +20,9 @@ class Nav {
 
   showNav(show = true) {
     if (show) {
-      this.navContainer.style.display = 'block';
+      this.navContainer.classList.add('shrink');
     } else {
-      this.navContainer.style.display = 'none';
+      this.navContainer.classList.remove('shrink');
     }
   }
 

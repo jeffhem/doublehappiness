@@ -1,16 +1,83 @@
 .global-nav {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 5rem 4rem ;
-  text-align: right;
-  display: none;
-  // background: url(../img/nav.svg);
-  // background-size: 30rem;
-  // background-position: left top;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  transition: all .2s ease-out;
+  &.shrink {
+    height: auto;
+    width: auto;
+    display: block;
+    position: absolute;
+    right: 4rem;
+    top: 0;
+    li {
+      display: inline-block;
+      background-image: none;
+      margin: 1rem;
+      &:hover:before, &:before {
+        background: none;
+      }
+      a {
+        font-size: 2rem;
+        &:after {
+          content: '' !important;
+        }
+      }
+    }
+  }
+
   li {
     list-style: none;
-    margin: 1rem 0;
+    flex: 1 1 25%;
+    text-align: center;
+    //fixed jumpy transition
+    box-shadow: 0 0 0 #000;
+    transform: translate3d(0,0,0);
+    background-size:  cover;
+    background-position: center top;
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-image: url("../img/about.JPG"); 
+    position: relative;
+    cursor: pointer;
+    filter: grayscale(0);
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(256, 256, 256, 0.4);
+    }
+    &:hover {
+      filter: grayscale(1);
+      &:before {
+        transition: background-color .1s ease-out;
+        background-color: rgba(113, 113, 113, 0.4);
+      }
+      & > a:after {
+        transform: scaleX(1);
+        visibility: visible;
+      }
+    }
+    &.global-nav-couple:hover > a:after {
+      content: 'our story';
+    }
+    &.global-nav-wedding:hover > a:after {
+      content: 'our BIG day';
+    }
+    &.global-nav-registry:hover > a:after {
+      content: '!!!';
+    }
+    &.global-nav-rsvp:hover > a:after {
+      content: 'now';
+    }
+    &.current > a:after {
+      transform: scaleX(1);
+      visibility: visible;
+    }
+
     a {
       font-family: 'Catamaran', sans-serif;
       font-size: 3rem;
@@ -19,30 +86,24 @@
       display: inline-block;
       text-decoration: none;
       position: relative;
-      &.current:after {
-        transform: scaleX(1);
-        visibility: visible;
-      }
+      padding: 6rem 0;
       &:after {
         //fixed jumpy transition
         box-shadow: 0 0 0 #000;
         transform: translate3d(0,0,0);
-        content: "";
+        content: '...';
+        text-align: center;
+        font-size: 2.5rem;
+        line-height: 1.5;
         width: 100%;
-        height: 2px;
+        height: 1px;
         display: block;
+        margin-top: 5px;
         background-color: #fff;
         visibility: hidden;
         transform: scaleX(0);
-        position: absolute;
-        bottom: 0px;
         transition: transform .15s ease-in-out;
       }
-      &:hover:after {
-        transform: scaleX(1);
-        visibility: visible;
-      }
-
     }
   }
 }
