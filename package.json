@@ -16,7 +16,8 @@
     "method-override": "2.3.x",
     "morgan": "1.6.x",
     "errorhandler": "1.4.x",
-    "connect-multiparty": "2.0.x"
+    "connect-multiparty": "2.0.x",
+    "serve-favicon": "^2.3.2"
   },
   "repository": {},
   "engines": {
@@ -53,7 +54,6 @@
     "gulp-util": "^3.0.7",
     "path": "^0.12.7",
     "run-sequence": "^1.1.4",
-    "serve-favicon": "^2.3.2",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   }

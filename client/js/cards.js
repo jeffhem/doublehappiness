@@ -1,5 +1,6 @@
 import util from './util';
 import {nav} from './nav';
+import {gmap} from './map';
 
 class Cards {
   constructor() {
@@ -7,7 +8,7 @@ class Cards {
     this.cards = [...document.querySelectorAll('.main-card')];
     this.logo = document.querySelector('.logo');
     this.fistCard = 'main-card about-us';
-    this.init();
+    // this.init();
   }
 
   init() {
@@ -16,14 +17,17 @@ class Cards {
     }, 500, true);
 
     this.cards.forEach((card) => {
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
         cardHandling(card);
-      });
+      }, false);
     });
   }
 
   expandCard(item, clickFromNav = false) {
     this.main.classList.remove('hidden');
+    if (item.classList.contains('wedding')){
+      gmap.init();
+    }
     if (clickFromNav) {
       if (!item.classList.contains('active')) {
         this.cards.forEach((card) => {

@@ -2,17 +2,25 @@
   &.active {
     cursor: default;
   }
-
   .main-card-content {
-    padding: 2% 20%;
+    padding: 5%;
+    @include breakpoint($bp--sm) {
+      padding: 2% 10%;
+    }
+    @include breakpoint($bp--md) {
+      padding: 2% 17%;
+    }
+  }
+  &-form-container {
+    width: 100%;
   }
   
-  .rsvp-form-group {
+  &-form-group {
     border-bottom:1px #d2dddd solid;
     margin: 2rem 0;
   }
 
-  .rsvp-form-row {
+  &-form-row {
     width: 100%;
     display: flex;
     justify-content: space-between;
