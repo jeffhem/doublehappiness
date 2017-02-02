@@ -1,6 +1,7 @@
 import util from './util';
 import {nav} from './nav';
 import {gmap} from './map';
+import {hamburger} from './hamburger';
 
 class Cards {
   constructor() {
@@ -66,6 +67,7 @@ class Cards {
         // show and highlight current nav
         nav.showNav();
         nav.highlightCurrent(card.dataset.current);
+        hamburger.showHamburger(true);
       }
     });
     // shrink logo
@@ -80,6 +82,7 @@ class Cards {
       // card.style.display = 'block';
     });
     nav.showNav(false);
+    hamburger.showHamburger(false);
     this.logo.classList.remove('shrink');
   }
 

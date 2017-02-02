@@ -42,10 +42,22 @@
       a {
         font-size: 1.5rem;
         padding: 0;
+        .full-name {
+          display: none;
+        }
+        .short-name {
+          display: inline;
+        }
         @include breakpoint($bp--sm) {
           display: inline-block;
           padding: 6rem 0;
           font-size: 2rem;
+          .full-name {
+            display: inline;
+          }
+          .short-name {
+            display: none;
+          }
         }
         &:after {
           content: '' !important;
@@ -114,6 +126,9 @@
       text-decoration: none;
       position: relative;
       padding: 6rem 0;
+      .short-name {
+        display: none;
+      }
       &:after {
         //fixed jumpy transition
         box-shadow: 0 0 0 #000;
