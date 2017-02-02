@@ -9,14 +9,16 @@
   transition: all .2s ease-in-out;
 
   &.shrink {
-    top: -2rem;
-    left: -4rem;
+    width: 10rem;
+    height: 10rem;
+    top: 0;
     right: auto;
     bottom: auto;
     transform: scale(.6);
     @include breakpoint($bp--sm) {
+      width: 20rem;
+      height: 20rem;
       top: -1rem;
-      left: 0;
     }
     h1 {
       display: none;
