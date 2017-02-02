@@ -85,7 +85,7 @@
     }
     label {
       padding: 2px;
-      width: 16rem;
+      width: auto;
       height: 3rem;
       display: block;
       position: relative;
@@ -93,7 +93,7 @@
       outline: none;
       user-select: none;
       &:before, &:after {
-        width: 6.5rem;
+        width: 4rem;
         display: inline-block;
         font-family: 'Fira Sans', sans-serif;
         font-size: 1.5rem;
@@ -103,6 +103,9 @@
         background-color: none;
         border: 1px solid #d2dddd;
         color: rgb(144,144,144);
+        @include breakpoint($bp--sm) {
+          width: 6.5rem;
+        }
       }
       &:before {
         content: attr(data-checked);

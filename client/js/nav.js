@@ -40,6 +40,10 @@ class Nav {
       item.classList.remove('current');
     });
   }
+
+  toggleSlide() {
+    this.navContainer.classList.toggle('slide-in');
+  }
 }
 
 export let nav = new Nav;

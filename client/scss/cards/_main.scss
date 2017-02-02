@@ -2,10 +2,13 @@
   display: block;
   width: 100%;
   padding: 0;
-  height: calc(100% - 16.6rem);
+  height: calc(100% - 10.6rem);
   position: relative;
-  top: 16.6rem;
-
+  top: 10.6rem;
+  @include breakpoint($bp--sm) {
+    top: 16.6rem;
+    height: calc(100% - 16.6rem);
+  }
 
   &-card-container {
     // flex: 1;
@@ -27,7 +30,6 @@
     transform: translate3d(0,0,0);
     transition: flex .2s ease-in-out;
     position: relative;
-    cursor: pointer;
     width: 0%;
     flex: 1 1 40%;
     background-color: rgba(256, 256, 256, 0.8);
@@ -68,7 +70,6 @@
       height: 100%;
       overflow-y: scroll;
       margin:0 auto;
-      font-family: 'Abel', sans-serif;
       font-size: 1.7rem;
       position: relative;
       top: 0;
@@ -78,9 +79,11 @@
         margin: 1rem 0;
         font-size: 2.5rem;
         font-weight: 800;
+        font-family: 'Lato', sans-serif;
       }
       h3 {
         margin: 5px;
+        font-family: 'Lato', sans-serif;
       }
       p {
         line-height: 1.7;
