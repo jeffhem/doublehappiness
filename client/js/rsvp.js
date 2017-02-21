@@ -16,58 +16,115 @@ class RSVP {
   }
 
   attendanding() {
-    const resBtn = this.priGuestElem.querySelector('.toggle-switch');
-    const menuOpt = this.priGuestElem.querySelector('.menu-option');
+    const respBtn = [...this.priGuestElem.querySelectorAll('.attend-btn')];
+    const hiddenRows = [...document.querySelectorAll('.row--hidden')];
     // hide or show menu option and other guests
-    resBtn.addEventListener('click', (e) => {
-      if (e.target.checked) {
-        menuOpt.classList.remove('hidden');
-        this.addMore.classList.remove('hidden');
-      } else {
-        menuOpt.classList.add('hidden');
-        this.addMore.classList.add('hidden');
-        // remove all added guest if not attending
-        [...document.querySelectorAll('[class^="rsvp-form-group guest-detail"]')].forEach((item) => {
-          item.remove();
-          this.guestNum = 1;
-        });
-      }
+    respBtn.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        if (e.target.checked) {
+          console.log(e.target.dataset);
+          if (e.target.dataset.resp === 'accept') {
+            hiddenRows.forEach((row) => {
+              row.classList.remove('hidden');
+            })
+            this.addMore.classList.remove('hidden');
+          } else if (e.target.dataset.resp === 'reject') {
+            hiddenRows.forEach((row) => {
+              row.classList.add('hidden');
+            })
+            this.addMore.classList.add('hidden');
+            // remove all added guest if not attending
+            [...document.querySelectorAll('[class^="rsvp-form-group additional-guest"]')].forEach((item) => {
+              item.remove();
+              this.guestNum = 1;
+            });
+          }
+        }
+      });
     });
   }
 
   addGuest() {
     this.addMore.addEventListener('click', () => {
-      const funcBtnElem = this.rsvpContainer.querySelector('.func-btn');
+      const additoinalBtnElem = this.rsvpContainer.querySelector('.row__guest--btn');
       const tempGuestElem = this.priGuestElem.cloneNode(true);
-
       // rest primary guest fields to generate other guest fields
-      tempGuestElem.querySelector('#attending-response').remove();
-      tempGuestElem.querySelector('h2').innerHTML = `Guest ${this.guestNum} Detail`;
-      tempGuestElem.querySelector('.menu-option').classList.remove('hidden');
+      tempGuestElem.querySelector('.row__attending').remove();
+      tempGuestElem.querySelector('.row__kids').remove();
+      tempGuestElem.querySelector('h3.guest-title').innerHTML = 'Additoinal guest details';
       tempGuestElem.classList.remove('primary-guest');
-      tempGuestElem.classList.add(`guest-detail-${this.guestNum}`);
+      tempGuestElem.classList.add('additional-guest');
       tempGuestElem.dataset.groupName = 'guest';
       const inputVal = [...tempGuestElem.querySelectorAll('input[type="text"]')];
       inputVal.forEach((item) => {
         item.value = '';
       });
+      const radioInput = [...tempGuestElem.querySelectorAll('input[type="radio"]')];
+      radioInput.forEach((input) => {
+        input.name += `-guest-${this.guestNum}`;
+        input.id += `-guest-${this.guestNum}`;
+        input.className += `-guest-${this.guestNum}`;
+        input.checked = false;
+      });
+      const radioInputLabel = [...tempGuestElem.querySelectorAll('label')];
+      radioInputLabel.forEach((label) => {
+        const oldVal = label.getAttribute('for');
+        label.setAttribute('for', `${oldVal}-guest-${this.guestNum}`);
+      });
 
-      this.rsvpContainer.insertBefore(tempGuestElem, funcBtnElem);
-      this.guestNum += 1;
+      // insert remove btn
+      const removeBtn = '<span class="remove-btn">&#x2715;</span>';
+      tempGuestElem.querySelector('h3.guest-title').insertAdjacentHTML('afterend', removeBtn);
+      this.removeBtnAction(tempGuestElem);
+
+      this.rsvpContainer.insertBefore(tempGuestElem, additoinalBtnElem);
+      this.guestNum++;
+    });
+  }
+
+  removeBtnAction(container) {
+    const removeBtn = container.querySelector('.remove-btn');
+    removeBtn.addEventListener('click', () => {
+      container.remove();
     });
   }
 
   hasEmptyfield() {
-    const AllInput = document.querySelectorAll('input');
+    // check required text fields
+    const allTextInput = document.querySelectorAll('input:not([type="radio"])');
     this.error = 0;
-    AllInput.forEach((field) => {
-      if (field.value == '') {
-        field.classList.add('empty');
+    allTextInput.forEach((field) => {
+      if (field.value === '' && field.hasAttribute('required')) {
+        field.closest('.rsvp-form-row').classList.add('empty');
         this.error += 1;
       } else {
-        field.classList.remove('empty');
+        field.closest('.rsvp-form-row').classList.remove('empty');
       }
     });
+
+    // check required radio fields
+    const allRadioInput = document.querySelectorAll('input[type="radio"]');
+    let radioClass = '';
+    let groupChecked = false;
+    let reset = true;
+
+    for (let i = 0; i < allRadioInput.length; i++) {
+      if (reset) {
+        radioClass = allRadioInput[i].className;
+        reset = false;
+        groupChecked = false;
+      }
+      if ((allRadioInput[(i + 1)] && allRadioInput[(i + 1)].className !== radioClass) || i + 1 === allRadioInput.length) {
+        reset = true;
+        if (!allRadioInput[i].checked) {
+          !groupChecked ? allRadioInput[i].closest('.rsvp-form-row').classList.add('empty') : '';
+        }
+      } else if (allRadioInput[i].checked) {
+        groupChecked = true;
+        allRadioInput[i].closest('.rsvp-form-row').classList.remove('empty');
+      }
+    }
+
     this.error ? this.error = true : this.error = false;
     return this.error;
   }
@@ -90,18 +147,18 @@ class RSVP {
         const inputName = input.dataset.nameField;
         const inputData = input.value;
         groupData[inputName] = inputData;
-      })
+      });
 
       const selections = group.querySelectorAll('select');
       selections.forEach((selection) => {
         const selectionType = selection.dataset.menuOption;
         const selectionData = selection.options[selection.selectedIndex].value;
         groupData[selectionType] = selectionData;
-      })
+      });
 
       formData.push(groupData);
 
-    })
+    });
 
     return formData;
   }

@@ -16,8 +16,23 @@
   }
   
   &-form-group {
-    border-bottom:1px #d2dddd solid;
     margin: 2rem 0;
+
+    &.additional-guest {
+      padding-top: 2rem;
+      border-top: 1px $smudge dashed;
+      position: relative;
+
+      .remove-btn {
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        cursor: pointer;
+        &:hover {
+          color: indianred;
+        }
+      }
+    }
   }
 
   &-form-row {
@@ -26,138 +41,109 @@
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
-    margin: 1rem 0;
+    margin: 3rem 0;
+    &.empty > h3{
+      color: indianred;
+    }
+    h3 {
+      font-family: 'Source Sans Pro', sans-serif;
+      flex-basis: 27%;
+    }
     &-title {
       flex-basis: 100%;
     }
     &-item {
-      display: inline-block;
-      margin: 0 5px;
-    }
-
-    .input-field {
-      position: relative;
       flex: 1 1 auto;
-      input {
-        width: 100%;
-        height: 4.7rem;
-        font-size: 1.7rem;
-        padding: 10px;
-        font-family: 'Fira Sans', sans-serif;
-        &.empty {
-          border: 1px red solid;
+      margin: 0 5px;
+      position: relative;
+      font-family: 'Fira Sans', sans-serif;
+      font-family: 'Source Sans Pro', sans-serif;
+      letter-spacing: 1.2px;
+
+      input[type="text"], input[type="number"] {
+        height: 3.7rem;
+        width: 90%;
+        font-size: 1.9rem;
+        font-family: 'Source Sans Pro', sans-serif;
+        padding: 0 7px;
+        background-color: transparent;
+        outline: none;
+        border: 0px;
+        color: $golden;
+        border-bottom: 1px $smudge solid;
+        &:focus, &:valid {
+          border-color: $golden;
         }
       }
-      label {
+    
+      input[type="radio"] {
         position: absolute;
-        top: 4px;
-        left: 7px;
-        font-size: 1.5rem;
-        color: gray;
+        visibility: hidden;
+        &:checked ~ label {
+          color: $golden;
+          &:before, &:after {
+            top: 1.8rem;
+            background-color: $golden;
+          }
+          &:before {
+            
+            transform: rotate(45deg) translateY(.7rem);
+          }
+          &:after {
+            width: 2.5rem;
+            transform: rotate(-45deg) ;
+          }
+        }
       }
-    }
-  }
 
-  .response-toggle {
-    position: relative;
-    display: inline-block;
-    height: 4rem;
-    input {
-      position: absolute;
-      margin-left: -9999px;
-      visibility: hidden;
-      border: 1px solid #d2dddd;
-      &:checked + label {
+      label {
+        position: relative;
+        font-size: 1.9rem;
+        letter-spacing: 1.2px;
+        display: block;
+        padding: 1rem;
+        color: $botanica;
+        cursor: pointer;
+        margin-left: 2.5rem;
+        &:hover {
+          color: $smudge;
+        }
+        &:before, &:after {
+          content: '';
+          display: block;
+          width: 3rem;
+          height: 1px;
+          background-color: $smudge;
+          position: absolute;
+          top: 2.8rem;
+          left: -2rem;
+          transition: .2s all ease-out;
+        }
         &:before {
-          color: #388d3e;
-          border: 1px solid rgb(58, 200, 68);
-          background-color: rgba(58, 200, 68, .15);
-          box-shadow: 0 0 10px rgba(58, 200, 68, .15);
+          width: 1rem;
         }
         &:after {
-
-        color: rgb(144,144,144);
-          border: 1px solid #d2dddd;
-          background-color: rgba(144, 144, 144, .15);
-          box-shadow: inset 0 0 0 transparent;
+          width: 2.5rem;
         }
       }
-    }
-    label {
-      padding: 2px;
-      width: auto;
-      height: 3rem;
-      display: block;
-      position: relative;
-      cursor: pointer;
-      outline: none;
-      user-select: none;
-      &:before, &:after {
-        width: 4rem;
-        display: inline-block;
-        font-family: 'Fira Sans', sans-serif;
-        font-size: 1.5rem;
-        text-align: center;
-        line-height: 2.5;
-        margin: 4px;
-        background-color: none;
-        border: 1px solid #d2dddd;
-        color: rgb(144,144,144);
-        @include breakpoint($bp--sm) {
-          width: 6.5rem;
-        }
-      }
-      &:before {
-        content: attr(data-checked);
-        background-color: rgba(144, 144, 144, .15);
-      }
-      &:after {
-        color: red;
-        border: 1px solid red;
-        background-color: rgba(234, 60, 66, .15);
-        content: attr(data-unchecked);
-        box-shadow:  0 0 10px rgba(234, 60, 66, .2);
-      }
-    }
-  }
 
-  .select-field {
-    flex: 1 1 auto;
-    select {
-      appearance: none;
-      text-indent: 0.01px;
-      text-overflow: '';
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-      padding-end: 20px;
-      padding-start: 2px;
-      border-radius: 0px;
-      border: 1px solid #d2dddd;
-      user-select: none;
-      overflow: hidden;
-      padding: 5px 10px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      position: relative;
-      width: 100%;
-      height: 4.7rem;
-      font-family: 'Fira Sans', sans-serif;
-      font-size: 1.7rem;
+      textarea {
+        border: 0px;
+        display: block;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 1.9rem;
+        line-height: 50px;
+        padding: 8px 20px 0 20px;
+        outline: none;
+        resize: none;
+        height: 100px;
+        width: 100%;
+        background-color: transparent;
+        background-image: linear-gradient(top , transparent, transparent 49px, $smudge 0);
 
-      cursor: pointer;
-      background-image:
-        linear-gradient(45deg, transparent 50%, gray 50%),
-        linear-gradient(135deg, gray 50%, transparent 50%),
-        linear-gradient(to right, #ccc, #ccc);
-      background-position:
-        calc(100% - 20px) calc(2rem + 2px),
-        calc(100% - 15px) calc(2rem + 2px),
-        calc(100% - 4.5rem) 0.5rem;
-      background-size:
-        5px 5px,
-        5px 5px,
-        1px 3.5rem;
-      background-repeat: no-repeat;
-
+        -webkit-background-size:  100% 50px;
+        background-size: 100% 50px;
+      }
     }
   }
 
@@ -170,21 +156,20 @@
       padding: 5px 10px;
       cursor: pointer;
     }
-    &__add-more {
-      color: #1c62e1;
-      border: 1px solid #1c62e1;
-      background-color: rgba(28, 98, 225, .15);
-      &:hover, &:focus,  &:active {
-        box-shadow:  0 0 10px rgba(28, 98, 225, .2);
+    &__add-more, &__submit {
+      color: $botanica;
+      border: 1px solid $botanica;
+      &:hover {
+        color: $golden;
+        border: 1px solid $golden;
       }
     }
-    &__submit {
-      color: #e1871c;
-      border: 1px solid #e1871c;
-      background-color: rgba(225, 135, 28, .15);
-      &:hover, &:focus,  &:active {
-        box-shadow:  0 0 10px rgba(225, 135, 28, .2);
-      }
-    }
+  }
+}
+
+.test {
+  background-color: #fff;
+  &:valid {
+    background-color: #000;
   }
 }

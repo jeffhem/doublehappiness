@@ -55,7 +55,7 @@
 							<div class="schedule-item">
 								<div class="schedule-item-time">6:00pm</div>
 								<div class="schedule-item-event">COCKTAIL</div>
-								<p>hour, please enjoy refreshments outside the Grant Ballroom</p>
+								<p>please enjoy refreshments at MO's Gallery</p>
 							</div>
 							<div class="schedule-item">
 								<div class="schedule-item-time">7:00pm</div>
@@ -83,9 +83,10 @@
 			<section class="main-card rsvp" data-current="rsvp">
 				<div class=" main-card-content">
 					<div class="rsvp-form-container">
+						<h2>Please RSVP and let us know </h2>
 						<div class="rsvp-form-group primary-guest" data-group-name="primary-guest">
-							<h2>Your Detail </h2>
-							<div class="rsvp-form-row" id="attending-response">		
+							<h3 class="guest-title">Your details</h3>
+							<!--<div class="rsvp-form-row" id="attending-response">		
 								<div class="rsvp-form-row-item">
 									<span>Are you coming?</span>
 								</div>
@@ -95,31 +96,80 @@
 										<label for="toggle-switch" data-checked="Yes" data-unchecked="No"></label>
 									</div>
 								</div>
+							</div>-->
+							<div class="rsvp-form-row row__name">
+								<h3>Full name</h3>
+								<div class="rsvp-form-row-item">
+									<input class="guest-first-name" type="text" value='' name="guest-first-name" data-name-field="guest_first_name" placeholder="first" required>
+									
+								</div>
+								<div class="rsvp-form-row-item">
+									<input class="guest-last-name" type="text" name="guest-last-name" data-name-field="guest_last_name" placeholder="last" required>
+									
+								</div>
 							</div>
-							<div class="rsvp-form-row">
-								<div class="rsvp-form-row-item input-field">
-									<input class="guest-first-name" type="text" name="guest-first-name" data-name-field="guest_first_name" placeholder="First Name">
+							<div class="rsvp-form-row row__attending">
+								<h3>Will you be able to join us?</h3>
+								<div class="rsvp-form-row-item" >
+									<input class="attend-btn" type="radio" id="accept" data-resp="accept" name="attending">
+									<label for="accept">joyfully accept</label>
 								</div>
-								<div class="rsvp-form-row-item input-field">
-									<input class="guest-last-name" type="text" name="guest-last-name" data-name-field="guest_last_name" placeholder="Last Name">
+								<div class="rsvp-form-row-item">
+									<input class="attend-btn" type="radio" id="decline" data-resp="reject" name="attending">
+									<label for="decline">regretfully decline</label>
 								</div>
 							</div>
-							<div class="rsvp-form-row menu-option hidden">
-								<h3 class="rsvp-form-row-title">Menu Options</h3>
-								<div class="rsvp-form-row-item select-field">
-									<select class="starter" data-menu-option="starter">
-										<option>Select a Started</option>
-										<option value="option 1">Option 1</option>
-										<option value="option 2">Option 2</option>
-									</select>
+							
+							<div class="rsvp-form-row row__menu row--hidden hidden">
+								<h3>Please select an entrée</h3>
+								<div class="rsvp-form-row-item" >
+									<input class="entree-select" type="radio" id="entree-beef" data-name-field="" name="entree" required>
+									<label for="entree-beef">Beef Tenderloin</label>
 								</div>
-								<div class="rsvp-form-row-item select-field">
-									<select class="entree" data-menu-option="entree">
-										<option>Select an Entree</option>
-										<option value="option 1">Option 1</option>
-										<option value="option 2">Option 2</option>
-									</select>
+								<div class="rsvp-form-row-item">
+									<input class="entree-select" type="radio" id="entree-fish" data-name-field="" name="entree">
+									<label for="entree-fish">Cod Meunière</label>
 								</div>
+								<div class="rsvp-form-row-item">
+									<input class="entree-select" type="radio" id="entree-vegi" data-name-field="" name="entree">
+									<label for="entree-vegi">Vegetarian</label>
+								</div>
+							</div>
+
+							<div class="rsvp-form-row row__kids row--hidden hidden">
+								<h3>Any kids come with you?</h3>
+								<div class="rsvp-form-row-item">
+									<input class="" type="number" name="" data-name-field="" placeholder="0" required>
+								</div>
+								<div class="rsvp-form-row-item">*kids meal will be served</div>
+							</div>
+						</div>
+
+						<div class="rsvp-form-row row__guest--btn row--hidden hidden">
+							<h3>Additional guest</h3>
+							<div class="rsvp-form-row-item">
+								<div class="func-btn__add-more">Add a guest</div>
+							</div>
+						</div>
+
+						<div class="rsvp-form-row">
+							<h3>Say something</h3>
+							<div class="rsvp-form-row-item">
+								<textarea class="" type="text" name="" data-name-field="" required></textarea>
+							</div>
+						</div>
+
+						<div class="rsvp-form-row menu-option hidden">
+							<div class="rsvp-form-row-item select-field">
+								<select class="entree" data-menu-option="entree">
+									<option>Select an Entree</option>
+									<option value="Fish">Beef Tenderloin</option>
+									<option value="Beef">Cod Meunière</option>
+									<option value="Vegetarian">Seasonal Vegetarian</option>
+								</select>
+							</div>
+							<div class="rsvp-form-row-item input-field kids-num">
+								<input class="num-of-kids" type="number" name="num-of-kids" data-name-field="num-of-kids" placeholder="Number of kids">
 							</div>
 						</div>
 						
@@ -128,7 +178,7 @@
 								<div class="func-btn__add-more hidden">Add a guest</div>
 							</div>
 							<div class="rsvp-form-row-item">
-								<div class="func-btn__submit">Submit</div>
+								<div class="func-btn__submit">reply</div>
 							</div>
 						</div>
 					</div>
