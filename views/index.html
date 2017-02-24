@@ -86,26 +86,14 @@
 						<h2>Please RSVP and let us know </h2>
 						<div class="rsvp-form-group primary-guest" data-group-name="primary-guest">
 							<h3 class="guest-title">Your details</h3>
-							<!--<div class="rsvp-form-row" id="attending-response">		
-								<div class="rsvp-form-row-item">
-									<span>Are you coming?</span>
-								</div>
-								<div class="rsvp-form-row-item">
-									<div class="response-toggle">
-										<input id="toggle-switch" type="checkbox" class="toggle-switch">
-										<label for="toggle-switch" data-checked="Yes" data-unchecked="No"></label>
-									</div>
-								</div>
-							</div>-->
+
 							<div class="rsvp-form-row row__name">
 								<h3>Full name</h3>
 								<div class="rsvp-form-row-item">
-									<input class="guest-first-name" type="text" value='' name="guest-first-name" data-name-field="guest_first_name" placeholder="first" required>
-									
+									<input class="guest-first-name" type="text" value='' data-name-field="guest_first_name" placeholder="first" required>
 								</div>
 								<div class="rsvp-form-row-item">
-									<input class="guest-last-name" type="text" name="guest-last-name" data-name-field="guest_last_name" placeholder="last" required>
-									
+									<input class="guest-last-name" type="text" data-name-field="guest_last_name" placeholder="last" required>
 								</div>
 							</div>
 							<div class="rsvp-form-row row__attending">
@@ -123,15 +111,15 @@
 							<div class="rsvp-form-row row__menu row--hidden hidden">
 								<h3>Please select an entrée</h3>
 								<div class="rsvp-form-row-item" >
-									<input class="entree-select" type="radio" id="entree-beef" data-name-field="" name="entree" required>
+									<input class="entree-select" type="radio" id="entree-beef" data-entree="Beef" name="entree" required>
 									<label for="entree-beef">Beef Tenderloin</label>
 								</div>
 								<div class="rsvp-form-row-item">
-									<input class="entree-select" type="radio" id="entree-fish" data-name-field="" name="entree">
+									<input class="entree-select" type="radio" id="entree-fish" data-entree="fish" name="entree">
 									<label for="entree-fish">Cod Meunière</label>
 								</div>
 								<div class="rsvp-form-row-item">
-									<input class="entree-select" type="radio" id="entree-vegi" data-name-field="" name="entree">
+									<input class="entree-select" type="radio" id="entree-vegi" data-entree="veggie" name="entree">
 									<label for="entree-vegi">Vegetarian</label>
 								</div>
 							</div>
@@ -139,7 +127,7 @@
 							<div class="rsvp-form-row row__kids row--hidden hidden">
 								<h3>Any kids come with you?</h3>
 								<div class="rsvp-form-row-item">
-									<input class="" type="number" name="" data-name-field="" placeholder="0" required>
+									<input class="" type="number" value="0" required>
 								</div>
 								<div class="rsvp-form-row-item">*kids meal will be served</div>
 							</div>
@@ -158,25 +146,8 @@
 								<textarea class="" type="text" name="" data-name-field="" required></textarea>
 							</div>
 						</div>
-
-						<div class="rsvp-form-row menu-option hidden">
-							<div class="rsvp-form-row-item select-field">
-								<select class="entree" data-menu-option="entree">
-									<option>Select an Entree</option>
-									<option value="Fish">Beef Tenderloin</option>
-									<option value="Beef">Cod Meunière</option>
-									<option value="Vegetarian">Seasonal Vegetarian</option>
-								</select>
-							</div>
-							<div class="rsvp-form-row-item input-field kids-num">
-								<input class="num-of-kids" type="number" name="num-of-kids" data-name-field="num-of-kids" placeholder="Number of kids">
-							</div>
-						</div>
 						
 						<div class="rsvp-form-row func-btn">
-							<div class="rsvp-form-row-item">
-								<div class="func-btn__add-more hidden">Add a guest</div>
-							</div>
 							<div class="rsvp-form-row-item">
 								<div class="func-btn__submit">reply</div>
 							</div>

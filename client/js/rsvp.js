@@ -131,34 +131,32 @@ class RSVP {
 
   getFormData() {
     const formGroups = document.querySelectorAll('.rsvp-form-group');
-    let formData = [];
+    const formData = [];
     formGroups.forEach((group) => {
-      let groupData = {};
-      
+      const groupData = {};
+      // guest type
       groupData.type = group.dataset.groupName;
-
-      const attend = group.querySelector('.toggle-switch');
-      if (attend) {
-        groupData.attend = attend.checked ? 'yes' : 'no';
-      }
-
+      // get name
       const inputs = group.querySelectorAll('input[type="text"]');
       inputs.forEach((input) => {
         const inputName = input.dataset.nameField;
         const inputData = input.value;
         groupData[inputName] = inputData;
       });
-
-      const selections = group.querySelectorAll('select');
-      selections.forEach((selection) => {
-        const selectionType = selection.dataset.menuOption;
-        const selectionData = selection.options[selection.selectedIndex].value;
-        groupData[selectionType] = selectionData;
-      });
+      // get invitation response
+      const attend = group.querySelector('input[name="attending"]:checked');
+      attend ? groupData.attend = attend.dataset.resp : '';
+      // get menu choice
+      const entree = group.querySelector('input[name^="entree"]:checked');
+      entree ? groupData.entree = entree.dataset.entree : '';
+      //get number of kids
+      const kids = group.querySelector('input[type="number"]');
+      kids ? groupData.kids = kids.value : '';
 
       formData.push(groupData);
-
     });
+    const msg = document.querySelector('textarea');
+    msg && msg.value ? formData.push({ msg: msg.value }) : '';
 
     return formData;
   }
@@ -174,21 +172,22 @@ class RSVP {
         // console.log(this.getFormData())
         formContent.style.display = 'none';
         const formData = this.getFormData();
+        console.log(formData);
         util.xhrPost('api/rsvp', formData, (data) => {
           // console.log(data);
           submitMsg.innerHTML = `<h2>Thank you for your RSVP, ${data.firstName}!!</h2>`;
-          if (data.attendanding == 'yes') {
-            submitMsg.innerHTML =  '<p>Looking forward to seeing you on May 13!</p>';
+          if (data.attendanding == 'accept') {
+            submitMsg.innerHTML +=  '<p>Looking forward to seeing you on May 13!</p>';
           } else {
-            submitMsg.innerHTML = '<p>We\'re sorry you can\'t make it, feel free to let us know anytime if your plan changed!</p>';
+            submitMsg.innerHTML += '<p>We\'re sorry you can\'t make it, feel free to let us know anytime if your plan changed!</p>';
           }
         }, (error) => {
           // console.log(error);
           // console.warn(`error: ${error}`);
           if (error.status === '409') {
-            submitMsg.innerHTML = `${error.body.guest_first_name}, Looks like you already registered before, please let Tianyu or Jeff know if your plan has changed.`
+            submitMsg.innerHTML = `${error.body.guest_first_name}, Looks like you already registered before, please let Tianyu or Jeff know if your plan has changed.`;
           }
-        })
+        });
       }
     })
   }

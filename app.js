@@ -95,16 +95,18 @@ app.post('/api/rsvp', (req, res) => {
           attending: entry.attend,
           firstName: entry.guest_first_name,
           lastName: entry.guest_last_name,
-          starter: entry.starter,
           entree: entry.entree,
+          kids: entry.kids,
         };
         returnData = {
           attendanding: entry.attend,
           firstName: entry.guest_first_name,
-        }
-      } else {
+        };
+      } else if (entry.type === 'guest'){
         delete entry.type;
         extraGuest.push(entry);
+      } else {
+        dbEntry.message = entry.msg;
       }
     });
 
