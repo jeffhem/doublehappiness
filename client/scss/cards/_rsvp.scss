@@ -33,6 +33,10 @@
         }
       }
     }
+
+    div[class*='empty'] > h3{
+      color: indianred;
+    }
   }
 
   &-form-row {
@@ -42,23 +46,30 @@
     align-items: baseline;
     flex-wrap: wrap;
     margin: 3rem 0;
-    &.empty > h3{
-      color: indianred;
-    }
+    
     h3 {
       font-family: 'Source Sans Pro', sans-serif;
-      flex-basis: 27%;
+      flex-basis: 100%;
+      @include breakpoint($bp--md) {
+        flex-basis: 27%;
+      }
     }
     &-title {
       flex-basis: 100%;
     }
     &-item {
-      flex: 1 1 auto;
-      margin: 0 5px;
+      flex: 1 1 100%;
+
+        margin: .5rem 5px;
+      
       position: relative;
       font-family: 'Fira Sans', sans-serif;
       font-family: 'Source Sans Pro', sans-serif;
       letter-spacing: 1.2px;
+      @include breakpoint($bp--sm) {
+        flex: 1 1 auto;
+        margin: 0 5px;
+      }
 
       input[type="text"], input[type="number"] {
         height: 3.7rem;

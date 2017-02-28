@@ -90,15 +90,15 @@ class RSVP {
   }
 
   hasEmptyfield() {
+    this.error = 0;
     // check required text fields
     const allTextInput = document.querySelectorAll('input:not([type="radio"])');
-    this.error = 0;
     allTextInput.forEach((field) => {
       if (field.value === '' && field.hasAttribute('required')) {
-        field.closest('.rsvp-form-row').classList.add('empty');
+        field.closest('.rsvp-form-row').classList.add(`empty-${field.className}`);
         this.error += 1;
       } else {
-        field.closest('.rsvp-form-row').classList.remove('empty');
+        field.closest('.rsvp-form-row').classList.remove(`empty-${field.className}`);
       }
     });
 
@@ -114,17 +114,28 @@ class RSVP {
         reset = false;
         groupChecked = false;
       }
-      if ((allRadioInput[(i + 1)] && allRadioInput[(i + 1)].className !== radioClass) || i + 1 === allRadioInput.length) {
-        reset = true;
-        if (!allRadioInput[i].checked) {
-          !groupChecked ? allRadioInput[i].closest('.rsvp-form-row').classList.add('empty') : '';
+      const formRowNode = allRadioInput[i].closest('.rsvp-form-row');
+      if (formRowNode && !formRowNode.classList.contains('hidden')) {
+        if ((allRadioInput[(i + 1)] && allRadioInput[(i + 1)].className !== radioClass) || i + 1 === allRadioInput.length) {
+          reset = true;
+          if (!allRadioInput[i].checked) {
+            if (!groupChecked) {
+              formRowNode.classList.add('empty');
+              this.error += 1;
+            }
+            console.log('here');
+            console.log(allRadioInput[i]);
+          } else {
+            groupChecked = true;
+            formRowNode.classList.remove('empty');
+          }
+        } else if (allRadioInput[i].checked) {
+          groupChecked = true;
+          formRowNode.classList.remove('empty');
         }
-      } else if (allRadioInput[i].checked) {
-        groupChecked = true;
-        allRadioInput[i].closest('.rsvp-form-row').classList.remove('empty');
       }
     }
-
+    console.log(this.error);
     this.error ? this.error = true : this.error = false;
     return this.error;
   }
@@ -172,7 +183,6 @@ class RSVP {
         // console.log(this.getFormData())
         formContent.style.display = 'none';
         const formData = this.getFormData();
-        console.log(formData);
         util.xhrPost('api/rsvp', formData, (data) => {
           // console.log(data);
           submitMsg.innerHTML = `<h2>Thank you for your RSVP, ${data.firstName}!!</h2>`;

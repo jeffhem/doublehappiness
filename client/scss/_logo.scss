@@ -18,13 +18,9 @@
     @include breakpoint($bp--sm) {
       width: 20rem;
       height: 20rem;
-      top: -1rem;
     }
     h1 {
       display: none;
-      @include breakpoint($bp--sm) {
-        display: block;
-      }
     }
   }
 
