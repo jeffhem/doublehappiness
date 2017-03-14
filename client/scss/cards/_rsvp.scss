@@ -150,9 +150,7 @@
         height: 100px;
         width: 100%;
         background-color: transparent;
-        background-image: linear-gradient(top , transparent, transparent 49px, $smudge 0);
-
-        -webkit-background-size:  100% 50px;
+        background-image: linear-gradient(to bottom, transparent 49px, $smudge 0);
         background-size: 100% 50px;
       }
     }

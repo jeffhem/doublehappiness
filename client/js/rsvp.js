@@ -92,7 +92,7 @@ class RSVP {
   hasEmptyfield() {
     this.error = 0;
     // check required text fields
-    const allTextInput = document.querySelectorAll('input:not([type="radio"])');
+    const allTextInput = [...document.querySelectorAll('input:not([type="radio"])')];
     allTextInput.forEach((field) => {
       if (field.value === '' && field.hasAttribute('required')) {
         field.closest('.rsvp-form-row').classList.add(`empty-${field.className}`);
@@ -103,7 +103,7 @@ class RSVP {
     });
 
     // check required radio fields
-    const allRadioInput = document.querySelectorAll('input[type="radio"]');
+    const allRadioInput = [...document.querySelectorAll('input[type="radio"]')];
     let radioClass = '';
     let groupChecked = false;
     let reset = true;
@@ -141,14 +141,14 @@ class RSVP {
   }
 
   getFormData() {
-    const formGroups = document.querySelectorAll('.rsvp-form-group');
+    const formGroups = [...document.querySelectorAll('.rsvp-form-group')];
     const formData = [];
     formGroups.forEach((group) => {
       const groupData = {};
       // guest type
       groupData.type = group.dataset.groupName;
       // get name
-      const inputs = group.querySelectorAll('input[type="text"]');
+      const inputs = [...group.querySelectorAll('input[type="text"]')];
       inputs.forEach((input) => {
         const inputName = input.dataset.nameField;
         const inputData = input.value;
