@@ -2,14 +2,16 @@
   .main-card-content {
     padding: 2%;
     max-width: 100rem;
-    height: auto;
-
+    justify-content: space-around;
     &-block {
       flex: 1 1 100%;
-      position: relative;
       margin: 1rem 0;
       @include breakpoint($bp--sm) {
-        flex: 1 1 40%;
+        flex: 0 1 45%;
+      }
+
+      h3 {
+        color: $golden;
       }
       
       &.images {
@@ -18,36 +20,39 @@
         flex-wrap: nowrap;
         margin: 3rem 0;
         justify-content: space-between;
+        .block-img {
+          flex: 1 1 33%;
+          display: inline-block;
+          position: relative;
+          .top {
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            animation: fade-in-out 10s linear infinite;
+          }
+         
+
+          &:hover > img.top{
+            opacity: 0;
+          }
+          img {
+            width: 100%;
+            transition: opacity, .2s ease-in;
+            
+          }
+        }
       }
 
       &.together {
         flex: 1 1 100%;
-      }
-
-      .block-img {
-        flex: 1 1 33%;
-        display: inline-block;
-        position: relative;
-        .top {
-          position: absolute;
-          z-index: 1;
-          left: 0;
-          top: 0;
-        }
-
-        &:hover > img.top{
-          opacity: 0;
-        }
-        img {
-          width: 100%;
-          transition: opacity, .2s ease-in;
-          
+        @include breakpoint($bp--sm) {
+          flex: 0 1 96%;
         }
       }
 
-      p {
-        padding: 1rem 2rem 4rem;
-      }
+      
+
     }
   }
 }
@@ -124,5 +129,14 @@ $duration: .7s;
 	  width: 2.75rem;
   	height: 4.5rem;
   	border-radius: 1.75rem 1.75rem 0 0;
+  }
+}
+
+@keyframes fade-in-out {
+  0%, 20%, 80%, 100% {
+    opacity: 1;
+  }
+  30%, 70% {
+    opacity: 0;
   }
 }

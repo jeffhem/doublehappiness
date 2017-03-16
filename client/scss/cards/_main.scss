@@ -72,14 +72,23 @@
       flex-wrap: wrap;
       color: #717171;
       h2 {
-        margin: 1rem 0;
-        font-size: 2.5rem;
+        margin: 1rem 0 2rem;
+        font-size: 3rem;
         font-weight: 800;
         font-family: 'Lato', sans-serif;
+        text-transform: uppercase;
+        color: $botanica;
       }
       h3 {
-        margin: 5px;
         font-family: 'Lato', sans-serif;
+        margin: 1rem 0;
+        strong {
+          font-weight: 800;
+          color: $botanica;
+        }
+        &.extra-margin {
+          margin-bottom: 3rem;
+        }
       }
       p {
         line-height: 1.7;

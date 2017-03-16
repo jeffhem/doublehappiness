@@ -13,11 +13,16 @@
   }
   &-form-container {
     width: 100%;
+    & > h3 {
+      font-size: 3rem;
+      font-weight: 200;
+      margin-bottom: 2rem;
+    }
   }
   
   &-form-group {
     margin: 2rem 0;
-
+    
     &.additional-guest {
       padding-top: 2rem;
       border-top: 1px $smudge dashed;
@@ -33,7 +38,11 @@
         }
       }
     }
-
+    .guest-title {
+      font-size: 2rem;
+      color: $botanica;
+      text-transform: uppercase;
+    }
     div[class*='empty'] > h3{
       color: indianred;
     }
@@ -59,9 +68,7 @@
     }
     &-item {
       flex: 1 1 100%;
-
-        margin: .5rem 5px;
-      
+      margin: .5rem 5px;
       position: relative;
       font-family: 'Fira Sans', sans-serif;
       font-family: 'Source Sans Pro', sans-serif;
@@ -113,11 +120,11 @@
         letter-spacing: 1.2px;
         display: block;
         padding: 1rem;
-        color: $botanica;
         cursor: pointer;
         margin-left: 2.5rem;
+        transition: .3s color ease-in-out;
         &:hover {
-          color: $smudge;
+          color: $golden;
         }
         &:before, &:after {
           content: '';

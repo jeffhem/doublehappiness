@@ -1,77 +1,95 @@
 .wedding {
   .main-card-content {
     flex-wrap: wrap;
+    @include breakpoint($bp--sm) { 
+      overflow-y: hidden;
+    }
     &-block {
       flex: 1 1 100%;
       @include breakpoint($bp--sm) {
         flex: 1 1 30%;
       }
     }
-
+    hr {
+      margin: 2rem;
+      border: 0;
+      height: 1px;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), $smudge, rgba(0, 0, 0, 0));
+    }
     .info {
       padding: 2%;
+      margin-bottom: 3rem;
       flex: 1 1 70%;
-
+      @include breakpoint($bp--sm) {
+        overflow-y: scroll;
+      }
       &-block {
         width: 100%;
-        padding: 5% 8%;
+        padding: 2% 8%;
         font-family: 'Lato', sans-serif;
-      }
-
-      .date {
-        padding: 6% 8% 2%;
-        @include breakpoint($bp--sm) {
-          padding: 6% 8%;
-        }
         h2 {
-          color: #ae1f24;
-          font-size: 6vmin;
-          margin: 0;
-          @include breakpoint($bp--sm) {
-            font-size: 3vw;
-          }
+          font-size: 3rem;
+          margin-top: .5rem;
         }
         h3 {
           margin-top: 1rem;
-          font-size: 4vmin;
+          font-size: 3rem;
           font-weight: 300;
+        }
+        p {
+          padding: 0;
+          line-height: 1.4;
+          margin-top: 1.5rem;
+        }
+        img {
+          display: none;
           @include breakpoint($bp--sm) {
-            font-size: 1.62vw;
+            display: inline;
+            float: right;
+            width: 20rem;
           }
         }
       }
 
-      .schedule {
+      .schedule, .menu {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        padding-top: 0;
+        @include breakpoint($bp--sm) {
+          margin-top: -2rem;
+        }
         &-item {
-          padding: 6% 1%;
+          color: $botanica;
+          padding: 2rem 1%;
           flex: 1 1 100%;
           @include breakpoint($bp--sm) {
-            flex: 1 1 30%;
-            padding: 1%;
+            flex: 1 1 30%; 
           }
           &-time {
-            font-size: 5vw;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
             font-weight: 300;
-            @include breakpoint($bp--sm) {
-              font-size: 1.5vw;
-            }
           }
           &-event {
-            font-size: 6vw;
+            font-size: 3rem;
+            color: $golden;
             letter-spacing: 1px;
             @include breakpoint($bp--sm) {
-              font-size: 2.6vw;
+              font-size: 2.5rem6vw;
             }
           }
-          p {
-            padding: 0;
-            line-height: 1.4;
-            margin-top: 1.5rem;
-          }
+          
+        }
+      }
+
+      .menu-item {
+        @include breakpoint($bp--sm) {
+          flex: 1 1 45%; 
+        }
+        
+        &-event {
+          color: $botanica;
         }
       }
 
