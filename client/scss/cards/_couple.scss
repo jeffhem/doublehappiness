@@ -1,8 +1,13 @@
 .couple {
   .main-card-content {
-    padding: 2%;
-    max-width: 100rem;
+    padding: 3%;
     justify-content: space-around;
+    @include breakpoint($bp--sm) {
+      padding: 3% 10%;
+    }
+    @include breakpoint($bp--md) {
+      padding: 3% 17%;
+    }
     &-block {
       flex: 1 1 100%;
       margin: 1rem 0;
@@ -13,7 +18,7 @@
       h3 {
         color: $golden;
       }
-      
+
       &.images {
         flex: 1 1 100%;
         display: flex;
@@ -31,7 +36,7 @@
             top: 0;
             animation: fade-in-out 10s linear infinite;
           }
-         
+
 
           &:hover > img.top{
             opacity: 0;
@@ -39,19 +44,20 @@
           img {
             width: 100%;
             transition: opacity, .2s ease-in;
-            
+
           }
         }
       }
 
       &.together {
         flex: 1 1 100%;
+        margin-bottom: 3rem;
         @include breakpoint($bp--sm) {
           flex: 0 1 96%;
         }
       }
 
-      
+
 
     }
   }
@@ -73,7 +79,7 @@ $duration: .7s;
   max-height: 250px;
 }
 
-.heart { 
+.heart {
   position:relative;
   margin: 1em;
 }
@@ -81,15 +87,15 @@ $duration: .7s;
 .heart:before, .heart:after {
 	position: absolute;
   content: "";
-  top: 0; 
+  top: 0;
   background: rgba(174, 31, 36, 1);
 
 	transform: rotate(-45deg);
 	transform-origin: 0 100%;
 }
 
-.heart:after { 
-	left: 0; 
+.heart:after {
+	left: 0;
 
 	transform: rotate(45deg);
 	transform-origin :100% 100%;
@@ -105,13 +111,13 @@ $duration: .7s;
 
 @keyframes left-ventricle {
   0%, 100% {
-    left: 2.5rem; 
-    width: 2.5rem;  
+    left: 2.5rem;
+    width: 2.5rem;
     height: 4.25rem;
   	border-radius: 1.25rem 1.25rem 0 0;
   }
   20%, 40% {
-    left: 2.5rem; 
+    left: 2.5rem;
 	  width: 2.75rem;
   	height: 4.5rem;
   	border-radius: 1.75rem 1.75rem 0 0;
@@ -120,7 +126,7 @@ $duration: .7s;
 
 @keyframes right-ventricle {
   0%, 100% {
-    width: 2.5rem;  
+    width: 2.5rem;
     height: 4.25rem;
   	border-radius: 1.25rem 1.25rem 0 0;
   }

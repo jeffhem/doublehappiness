@@ -3,26 +3,30 @@
     cursor: default;
   }
   .main-card-content {
-    padding: 5%;
+    padding: 3%;
     @include breakpoint($bp--sm) {
-      padding: 2% 10%;
+      padding: 3% 10%;
     }
     @include breakpoint($bp--md) {
-      padding: 2% 17%;
+      padding: 3% 17%;
     }
   }
   &-form-container {
     width: 100%;
+    h2 {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
     & > h3 {
       font-size: 3rem;
       font-weight: 200;
       margin-bottom: 2rem;
     }
   }
-  
+
   &-form-group {
     margin: 2rem 0;
-    
+
     &.additional-guest {
       padding-top: 2rem;
       border-top: 1px $smudge dashed;
@@ -39,9 +43,7 @@
       }
     }
     .guest-title {
-      font-size: 2rem;
       color: $botanica;
-      text-transform: uppercase;
     }
     div[class*='empty'] > h3{
       color: indianred;
@@ -55,9 +57,9 @@
     align-items: baseline;
     flex-wrap: wrap;
     margin: 3rem 0;
-    
+    font-family: 'Catamaran', sans-serif;
+
     h3 {
-      font-family: 'Source Sans Pro', sans-serif;
       flex-basis: 100%;
       @include breakpoint($bp--md) {
         flex-basis: 27%;
@@ -70,8 +72,6 @@
       flex: 1 1 100%;
       margin: .5rem 5px;
       position: relative;
-      font-family: 'Fira Sans', sans-serif;
-      font-family: 'Source Sans Pro', sans-serif;
       letter-spacing: 1.2px;
       @include breakpoint($bp--sm) {
         flex: 1 1 auto;
@@ -82,7 +82,8 @@
         height: 3.7rem;
         width: 90%;
         font-size: 1.9rem;
-        font-family: 'Source Sans Pro', sans-serif;
+        letter-spacing: 1.2px;
+        font-family: 'Catamaran', sans-serif;
         padding: 0 7px;
         background-color: transparent;
         outline: none;
@@ -93,7 +94,7 @@
           border-color: $golden;
         }
       }
-    
+
       input[type="radio"] {
         position: absolute;
         visibility: hidden;
@@ -104,7 +105,6 @@
             background-color: $golden;
           }
           &:before {
-            
             transform: rotate(45deg) translateY(.7rem);
           }
           &:after {
@@ -123,6 +123,7 @@
         cursor: pointer;
         margin-left: 2.5rem;
         transition: .3s color ease-in-out;
+        color: $botanica;
         &:hover {
           color: $golden;
         }
@@ -148,7 +149,7 @@
       textarea {
         border: 0px;
         display: block;
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: 'Catamaran', sans-serif;
         font-size: 1.9rem;
         line-height: 50px;
         padding: 8px 20px 0 20px;
@@ -171,14 +172,15 @@
       text-align: center;
       padding: 5px 10px;
       cursor: pointer;
-    }
-    &__add-more, &__submit {
       color: $botanica;
       border: 1px solid $botanica;
       &:hover {
         color: $golden;
         border: 1px solid $golden;
       }
+    }
+    &__submit {
+      margin: 2rem auto;
     }
   }
 }

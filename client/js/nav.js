@@ -5,6 +5,34 @@ class Nav {
     this.navContainer = document.querySelector('.global-nav');
     this.navItems = [...this.navContainer.querySelectorAll('li')];
     this.navAction();
+    this.mediaQueryHandeler();
+  }
+
+  mediaQueryHandeler() {
+    if (matchMedia) {
+      const mq = window.matchMedia("(max-width: 768px)");
+      mq.addListener(this.WidthChange);
+      this.WidthChange(mq);
+    }
+  }
+
+  WidthChange(mq) {
+    if (mq.matches) {
+      console.log('its less than 500');
+      document.querySelector('.global-nav').classList.add('shrink');
+    } else {
+      const mainCards = [...document.querySelectorAll('.main-card')];
+      const onCards = mainCards.some((card) => {
+        return card.classList.contains('active');
+      })
+      console.log(onCards);
+
+      if (!onCards) {
+        document.querySelector('.global-nav').classList.remove('shrink');
+      }
+      console.log('its more than 500');
+
+    }
   }
 
   navAction() {
@@ -22,7 +50,9 @@ class Nav {
     if (show) {
       this.navContainer.classList.add('shrink');
     } else {
-      this.navContainer.classList.remove('shrink');
+      if(window.innerWidth > 768 || document.body.clientWidth > 768) {
+        this.navContainer.classList.remove('shrink');
+      }
     }
   }
 
