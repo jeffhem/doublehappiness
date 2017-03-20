@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tianyu and Jeff Wedding</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+		<link rel="stylesheet" href="/css/guestRsvpList.css" />
+		<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+	</head>
+	<body>
+    <section class="guest-table">
+      <div class="table-title">
+        <h3>Tianyu & Jeff Wedding Guest List</h3>
+      </div>
+      <table class="guest-list">
+        <thead>
+          <tr>
+            <th>Guest Name</th>
+            <th>Status</th>
+            <th>Entree</th>
+            <th>Kids</th>
+            <th>Additional Guest</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% guests.rows.forEach(function(guest) { %>
+          <tr>
+            <td><%= guest.doc.firstName %> <%= guest.doc.lastName %></td>
+            <td><%= guest.doc.attending %></td>
+            <td><%= guest.doc.entree %></td>
+            <td><%= guest.doc.kids %></td>
+            <td>
+            <% if (guest.doc.extraGuest && guest.doc.extraGuest.length > 0 ){ %>
+
+              <% guest.doc.extraGuest.forEach(function(xguest) { %>
+                <div><%= xguest.guest_first_name %> <%= xguest.guest_last_name %>: <%= xguest.entree %></div>
+              <% }); %>
+
+            <% } %>
+            </td>
+            <td><%= guest.doc.message %></td>
+          </tr>
+        <% }); %>
+        </tbody>
+      <table>
+    </section>
+		<script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBlqi3GCT6-moTPE99I5Octci_A-f2DKSk"></script>
+	</body>
+</html>

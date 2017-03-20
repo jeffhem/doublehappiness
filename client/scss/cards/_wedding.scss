@@ -77,12 +77,10 @@
         @include breakpoint($bp--sm) {
           flex: 1 1 45%;
         }
-        &-time {
-          margin-bottom: .7rem;
-        }
         &-event {
           font-size: 2.5rem;
           color: $botanica;
+          line-height: 1.3;
         }
         p {
           margin-top: .7rem;

@@ -123,8 +123,6 @@ class RSVP {
               formRowNode.classList.add('empty');
               this.error += 1;
             }
-            console.log('here');
-            console.log(allRadioInput[i]);
           } else {
             groupChecked = true;
             formRowNode.classList.remove('empty');

@@ -1,0 +1,75 @@
+<section class="main-card rsvp" data-current="rsvp">
+  <div class=" main-card-content">
+    <div class="rsvp-form-container">
+      <h2>Kindly Reply by April 1st</h2>
+      <div class="rsvp-form-group primary-guest" data-group-name="primary-guest">
+        <h3 class="guest-title">Your details</h3>
+        <div class="rsvp-form-row row__name">
+          <h3>Full name</h3>
+          <div class="rsvp-form-row-item">
+            <input class="guest-first-name" type="text" value='' data-name-field="guest_first_name" placeholder="first" required>
+          </div>
+          <div class="rsvp-form-row-item">
+            <input class="guest-last-name" type="text" data-name-field="guest_last_name" placeholder="last" required>
+          </div>
+        </div>
+        <div class="rsvp-form-row row__attending">
+          <h3>Will you be able to join us?</h3>
+          <div class="rsvp-form-row-item" >
+            <input class="attend-btn" type="radio" id="accept" data-resp="accept" name="attending">
+            <label for="accept">joyfully accept</label>
+          </div>
+          <div class="rsvp-form-row-item">
+            <input class="attend-btn" type="radio" id="decline" data-resp="reject" name="attending">
+            <label for="decline">regretfully decline</label>
+          </div>
+        </div>
+
+        <div class="rsvp-form-row row__menu row--hidden hidden">
+          <h3>Please select an entrée</h3>
+          <div class="rsvp-form-row-item" >
+            <input class="entree-select" type="radio" id="entree-beef" data-entree="Beef" name="entree" required>
+            <label for="entree-beef">Beef Tenderloin</label>
+          </div>
+          <div class="rsvp-form-row-item">
+            <input class="entree-select" type="radio" id="entree-fish" data-entree="fish" name="entree">
+            <label for="entree-fish">Cod Meunière</label>
+          </div>
+          <div class="rsvp-form-row-item">
+            <input class="entree-select" type="radio" id="entree-vegi" data-entree="veggie" name="entree">
+            <label for="entree-vegi">Vegetarian</label>
+          </div>
+        </div>
+
+        <div class="rsvp-form-row row__kids row--hidden hidden">
+          <h3>Any kids come with you?</h3>
+          <div class="rsvp-form-row-item">
+            <input class="" type="number" value="0" required>
+          </div>
+          <div class="rsvp-form-row-item">*kids meal will be served</div>
+        </div>
+      </div>
+
+      <div class="rsvp-form-row row__guest--btn row--hidden hidden">
+        <h3>Additional guest</h3>
+        <div class="rsvp-form-row-item">
+          <div class="func-btn__add-more">Add a guest</div>
+        </div>
+      </div>
+
+      <div class="rsvp-form-row">
+        <h3>Message</h3>
+        <div class="rsvp-form-row-item">
+          <textarea class="" type="text" name="" data-name-field="" required></textarea>
+        </div>
+      </div>
+
+      <div class="rsvp-form-row func-btn">
+        <div class="rsvp-form-row-item">
+          <div class="func-btn__submit">reply</div>
+        </div>
+      </div>
+    </div>
+    <div class="submit-msg"></div>
+  </div>
+</section>

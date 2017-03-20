@@ -18,20 +18,16 @@ class Nav {
 
   WidthChange(mq) {
     if (mq.matches) {
-      console.log('its less than 500');
       document.querySelector('.global-nav').classList.add('shrink');
     } else {
       const mainCards = [...document.querySelectorAll('.main-card')];
       const onCards = mainCards.some((card) => {
         return card.classList.contains('active');
       })
-      console.log(onCards);
 
       if (!onCards) {
         document.querySelector('.global-nav').classList.remove('shrink');
       }
-      console.log('its more than 500');
-
     }
   }
 

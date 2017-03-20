@@ -79,6 +79,8 @@ initDBConnection();
 
 app.get('/', routes.index);
 
+app.get('/guest-rsvp-list', routes.guest);
+
 app.post('/api/rsvp', (req, res) => {
   if (req.body && req.body !== '') {
     const guestData = req.body;
