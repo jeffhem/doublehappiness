@@ -195,7 +195,7 @@ class RSVP {
           // console.log(error);
           // console.warn(`error: ${error}`);
           if (error.status === '409') {
-            submitMsg.innerHTML = `${error.body.guest_first_name}, Looks like you already registered before, please let Tianyu or Jeff know if your plan has changed.`;
+            submitMsg.innerHTML = `${error.body.guest_first_name}, Looks like you already registered before, please let Tianyu or Jeff, if your plan has changed.`;
           }
         });
       }

@@ -1,5 +1,7 @@
 .couple {
   .main-card-content {
+    max-height: 100%;
+    height: auto;
     padding: 3%;
     justify-content: space-around;
     @include breakpoint($bp--sm) {
@@ -9,8 +11,8 @@
       padding: 3% 17%;
     }
     &-block {
-      flex: 1 1 100%;
-      margin: 1rem 0;
+      flex: 0 1 100%;
+      margin: 1rem 0 3rem;
       @include breakpoint($bp--sm) {
         flex: 0 1 45%;
       }
@@ -19,45 +21,24 @@
         color: $golden;
       }
 
-      &.images {
-        flex: 1 1 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        margin: 3rem 0;
-        justify-content: space-between;
-        .block-img {
-          flex: 1 1 33%;
-          display: inline-block;
-          position: relative;
-          .top {
-            position: absolute;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            animation: fade-in-out 10s linear infinite;
-          }
+      .block-img {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        margin-bottom: 2rem;
+        .top {
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          animation: fade-in-out 10s linear infinite;
+        }
+        img {
+          width: 100%;
+          transition: opacity, .2s ease-in;
 
-
-          &:hover > img.top{
-            opacity: 0;
-          }
-          img {
-            width: 100%;
-            transition: opacity, .2s ease-in;
-
-          }
         }
       }
-
-      &.together {
-        flex: 1 1 100%;
-        margin-bottom: 3rem;
-        @include breakpoint($bp--sm) {
-          flex: 0 1 96%;
-        }
-      }
-
-
 
     }
   }
@@ -68,20 +49,15 @@
 $duration: .7s;
 
 .container {
-  position: absolute;
-  top: -4rem;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
+  margin: 0 auto;
   overflow: hidden;
-  max-width: 85px;
-  max-height: 250px;
+  width: 7rem;
+  height: 10rem;
+  padding: 1rem;
 }
 
 .heart {
   position:relative;
-  margin: 1em;
 }
 
 .heart:before, .heart:after {
