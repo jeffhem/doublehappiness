@@ -11,17 +11,19 @@
 		<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 	</head>
 	<body>
-		<main class="main hidden">
-			<section class="main-card-container">
-				<% include ./partials/couple %>
-				<% include ./partials/wedding %>
-				<% include ./partials/registry %>
-				<% include ./partials/rsvp %>
-			</section>
-		</main>
-		<% include ./partials/logo %>
-		<% include ./partials/nav %>
-		<script type="text/javascript" src="/js/doublehappiness.js"></script>
-		<script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBlqi3GCT6-moTPE99I5Octci_A-f2DKSk"></script>
+		<section class="content-wrapper">
+			<main class="main hidden">
+				<section class="main-card-container">
+					<% include ./partials/couple %>
+					<% include ./partials/wedding %>
+					<% include ./partials/registry %>
+					<% include ./partials/rsvp %>
+				</section>
+			</main>
+			<% include ./partials/logo %>
+			<% include ./partials/nav %>
+			<script type="text/javascript" src="/js/doublehappiness.js"></script>
+			<script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBlqi3GCT6-moTPE99I5Octci_A-f2DKSk"></script>
+		</section>
 	</body>
 </html>
