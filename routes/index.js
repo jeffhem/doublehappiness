@@ -14,10 +14,32 @@ exports.guest = function(req, res){
   };
   request(options, (error, response, body) => {
     if (!error) {
-      console.log(response.statusCode);
-      console.log(body);
       var guests = JSON.parse(body);
-      res.render('guest-rsvp-list', { guests: guests});
+      var total = {
+        guests: 0,
+        kids: 0,
+        Beef: 0,
+        fish: 0,
+        veggie: 0
+      }
+
+      guests.rows.map(function(guest) {
+        var guestData = guest.doc;
+        if (guestData.attending == 'accept') {
+          total.guests += 1;
+          total.kids += parseInt(guestData.kids);
+          total[guestData.entree] += 1;
+          if (guestData.extraGuest && guestData.extraGuest.length > 0){
+            console.log(guestData.extraGuest.length);
+            total.guests += guestData.extraGuest.length;
+            guestData.extraGuest.map(function(xguest) {
+              total[xguest.entree] += 1;
+            })
+          }
+        }
+      })
+
+      res.render('guest-rsvp-list', { guests: guests, total: total});
     }
   });
 

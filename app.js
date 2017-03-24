@@ -88,7 +88,6 @@ app.post('/api/rsvp', (req, res) => {
     var dbEntry = {};
     var returnData = {};
 
-    console.log(guestData);
     guestData.forEach((entry) => {
       if (entry.type === 'primary-guest') {
         const id = `${entry.guest_first_name}_${entry.guest_last_name}`.replace(/ /g, '_');
